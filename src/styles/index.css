@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+/* 1. Importamos la fuente EB Garamond con todas sus variantes (Fina, Regular, Itálica, Negrita) */
+
+
+/* 2. Forzamos a todo el sitio a usar EB Garamond como fuente principal */
+*, *::before, *::after {
+  font-family: 'EB Garamond', Georgia, serif !important;
+}
+
+/* 3. Ajuste fino de lectura (Las fuentes clásicas lucen mejor con un toque de aire) */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  font-size: 1.1rem; /* Las fuentes con serifas se leen mejor si son un cachito más grandes */
+  line-height: 1.75;  /* Le da un espaciado interlineal muy cómodo para la vista */
+  letter-spacing: 0.01em;
+}
