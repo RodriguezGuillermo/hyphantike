@@ -4,6 +4,7 @@ import imgAnalisis from "../../imports/arquitectura_del_discurso-1.png";
 import imgDiseño from "../../imports/Dise_o_y_planificaicion.png";
 import imgArquitectura from "../../imports/analisis_discursivos.png";
 
+
 interface ServicioData {
   title: string;
   subtitle: string;

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
+import libroImg from '../../imports/libro-1.png'; 
 
 // Definimos la interfaz de los datos que devuelve Google Drive
 interface EnsayoDrive {
@@ -121,7 +122,7 @@ export function EnsayosPage() {
             </div>
             {/* Imagen leída directamente desde la carpeta public */}
             <img
-              src="./src/imports/libro-1.png"
+              src="../../imports/libro-1.png"
               alt="Ensayos"
               style={{
                 width: "clamp(100px, 14vw, 160px)",
