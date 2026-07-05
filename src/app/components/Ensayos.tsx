@@ -31,9 +31,8 @@ export function Ensayos() {
             ¿Por qué publicamos ensayos?
           </p>
 
-          {/* Texto + imagen lado a lado */}
-          <div style={{ display: "flex", alignItems: "center", gap: "48px", marginBottom: "48px" }}>
-            <div style={{ flex: 1 }}>
+          <div className="ensayos-layout">
+            <div className="ensayos-texto">
               {PARRAFOS.map((p, i) => (
                 <p
                   key={i}
@@ -54,10 +53,8 @@ export function Ensayos() {
             <img
               src={libroImg}
               alt="Ensayos"
+              className="ensayos-imagen"
               style={{
-                width: "clamp(180px, 24vw, 320px)",
-                objectFit: "contain",
-                flexShrink: 0,
                 mixBlendMode: "screen",
                 opacity: 0.9,
               }}

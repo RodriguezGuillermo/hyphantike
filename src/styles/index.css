@@ -21,3 +21,37 @@ p {
   line-height: 1.75;  /* Le da un espaciado interlineal muy cómodo para la vista */
   letter-spacing: 0.01em;
 }
+
+.ensayos-layout {
+  display: flex;
+  flex-direction: column-reverse; /* Sube la imagen y baja el texto */
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+.ensayos-texto {
+  width: 100%; /* El texto recupera todo el ancho para una lectura cómoda */
+}
+
+.ensayos-imagen {
+  width: 180px; /* Tamaño ideal del librito para celulares */
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* 2. Computadoras (Desde 768px para arriba) */
+@media (min-width: 768px) {
+  .ensayos-layout {
+    flex-direction: row; /* Vuelve a ponerlos uno al lado del otro */
+    gap: 48px;
+  }
+
+  .ensayos-texto {
+    flex: 1; /* El texto ocupa el espacio sobrante */
+  }
+
+  .ensayos-imagen {
+    width: clamp(180px, 24vw, 320px); /* El tamaño dinámico que ya tenías */
+  }
+}
