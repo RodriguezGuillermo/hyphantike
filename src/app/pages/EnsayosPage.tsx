@@ -121,7 +121,7 @@ export function EnsayosPage() {
             </div>
             {/* Imagen leída directamente desde la carpeta public */}
             <img
-              src="./src/imports/libro.png"
+              src="./src/imports/libro-1.png"
               alt="Ensayos"
               style={{
                 width: "clamp(100px, 14vw, 160px)",
