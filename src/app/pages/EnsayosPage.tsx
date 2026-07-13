@@ -78,7 +78,7 @@ export function EnsayosPage() {
   };
 
   return (
-    <div style={{ paddingTop: "60px", minHeight: "100vh", backgroundColor: "#F0E9D2" }}>
+    <div style={{ paddingTop: "72px", minHeight: "100vh", backgroundColor: "#F0E9D2" }}>
       <style>{`
         .ensayos-grid {
           display: grid;
