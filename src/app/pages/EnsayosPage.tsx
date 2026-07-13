@@ -50,9 +50,9 @@ export function EnsayosPage() {
   const [ensayos, setEnsayos] = useState<EnsayoDrive[]>([]);
   const [cargando, setCargando] = useState(true);
 
-  // Tus credenciales reales
-  const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
-  const FOLDER_ID = import.meta.env.VITE_GOOGLE_FOLDER_ID;
+  // Tus credenciales reales (via .env en local, via GitHub Secrets en prod)
+  const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY ?? "";
+  const FOLDER_ID = import.meta.env.VITE_GOOGLE_FOLDER_ID ?? "";
 
   useEffect(() => {
     // Consulta a tu carpeta específica, trae 6 resultados (o los que haya si son menos), ordenados por los más nuevos
