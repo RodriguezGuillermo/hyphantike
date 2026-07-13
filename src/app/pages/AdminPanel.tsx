@@ -1,7 +1,9 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-router";
-import { RefreshCw, Save } from "lucide-react";
+import { RefreshCw, Save, Lock } from "lucide-react";
 import { useCMS, defaultCMS, Ensayo } from "../context/CMSContext";
+
+const ADMIN_PASSWORD = "hyphantike2024";
 
 const FIELD_STYLE: React.CSSProperties = {
   backgroundColor: "#F0E9D2",
@@ -354,10 +356,97 @@ export function AdminPanel() {
   const [saveHov, setSaveHov] = useState(false);
   const [restHov, setRestHov] = useState(false);
 
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return sessionStorage.getItem("hyphantike_admin_auth") === "true";
+  });
+  const [passwordInput, setPasswordInput] = useState("");
+  const [authError, setAuthError] = useState(false);
+  const [loginHov, setLoginHov] = useState(false);
+
+  const handleLogin = () => {
+    if (passwordInput === ADMIN_PASSWORD) {
+      sessionStorage.setItem("hyphantike_admin_auth", "true");
+      setIsAuthenticated(true);
+      setAuthError(false);
+    } else {
+      setAuthError(true);
+      setPasswordInput("");
+    }
+  };
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("hyphantike_admin_auth");
+    setIsAuthenticated(false);
+    setPasswordInput("");
+  };
+
   const handleSave = () => {
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
   };
+
+  if (!isAuthenticated) {
+    return (
+      <div style={{ minHeight: "100vh", backgroundColor: "#F0E9D2", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(103,137,131,0.3)", padding: "48px 40px", maxWidth: "400px", width: "100%", textAlign: "center" }}>
+          <Lock size={32} color="#678983" style={{ marginBottom: "20px" }} />
+          <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", color: "#181D31", fontSize: "1.4rem", margin: "0 0 8px" }}>
+            Panel Admin
+          </h2>
+          <p style={{ fontFamily: "'EB Garamond', Georgia, serif", color: "rgba(24,29,49,0.6)", fontSize: "0.95rem", margin: "0 0 28px" }}>
+            Ingresá la contraseña para acceder.
+          </p>
+          <input
+            type="password"
+            value={passwordInput}
+            onChange={(e) => { setPasswordInput(e.target.value); setAuthError(false); }}
+            onKeyDown={(e) => e.key === "Enter" && handleLogin()}
+            placeholder="Contraseña"
+            style={{
+              width: "100%",
+              padding: "12px 14px",
+              border: authError ? "1px solid #cc0000" : "1px solid rgba(103,137,131,0.4)",
+              backgroundColor: "#F0E9D2",
+              fontFamily: "'EB Garamond', Georgia, serif",
+              fontSize: "1rem",
+              color: "#181D31",
+              outline: "none",
+              boxSizing: "border-box",
+              marginBottom: "12px",
+            }}
+          />
+          {authError && (
+            <p style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", color: "#cc0000", margin: "0 0 12px" }}>
+              Contraseña incorrecta.
+            </p>
+          )}
+          <button
+            onClick={handleLogin}
+            onMouseEnter={() => setLoginHov(true)}
+            onMouseLeave={() => setLoginHov(false)}
+            style={{
+              width: "100%",
+              padding: "12px",
+              backgroundColor: loginHov ? "#556f6a" : "#678983",
+              color: "#F0E9D2",
+              border: "none",
+              fontFamily: "Inter, sans-serif",
+              fontSize: "12px",
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              cursor: "pointer",
+              transition: "background-color 0.2s",
+            }}
+          >
+            Ingresar
+          </button>
+          <Link to="/" style={{ display: "block", marginTop: "16px", fontFamily: "Inter, sans-serif", fontSize: "12px", color: "#678983", textDecoration: "none" }}>
+            ← Volver al inicio
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#F0E9D2" }}>
@@ -373,6 +462,21 @@ export function AdminPanel() {
             </span>
           </div>
           <div style={{ display: "flex", gap: "8px" }}>
+            <button
+              onClick={handleLogout}
+              style={{
+                display: "flex", alignItems: "center", gap: "4px",
+                padding: "6px 10px",
+                backgroundColor: "transparent",
+                border: "1px solid rgba(200,50,50,0.5)",
+                color: "rgba(200,50,50,0.7)",
+                fontFamily: "Inter, sans-serif", fontSize: "10px",
+                letterSpacing: "0.08em", textTransform: "uppercase",
+                cursor: "pointer", touchAction: "manipulation",
+              }}
+            >
+              Cerrar sesión
+            </button>
             <button
               onMouseEnter={() => setRestHov(true)}
               onMouseLeave={() => setRestHov(false)}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Instagram, MessageCircle, Mail } from "lucide-react";
 import { useCMS } from "../context/CMSContext";
 
 const NAV_LINKS = [
@@ -73,7 +73,7 @@ export function Navbar() {
           right: 0,
           zIndex: 50,
           backgroundColor: "#F0E9D2",
-          height: "60px",
+          height: "72px",
           borderBottom: scrolled ? "1px solid #678983" : "1px solid rgba(103,137,131,0.3)",
           boxShadow: scrolled ? "0 2px 12px rgba(24,29,49,0.08)" : "none",
           transition: "border-color 0.3s ease, box-shadow 0.3s ease",
@@ -83,9 +83,9 @@ export function Navbar() {
       >
         <div
           style={{
-            maxWidth: "1152px",
+            maxWidth: "1320px",
             margin: "0 auto",
-            padding: "0 24px",
+            padding: "0 40px",
             width: "100%",
             display: "flex",
             alignItems: "center",
@@ -94,10 +94,10 @@ export function Navbar() {
         >
           <Link to="/" style={{ textDecoration: "none" }}>
             {data.logoUrl ? (
-              <img src={data.logoUrl} alt="Hyphantiké" style={{ height: "36px", display: "block" }} />
+              <img src={data.logoUrl} alt="Hyphantiké" style={{ height: "44px", display: "block" }} />
             ) : (
               <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width={34} height={34} viewBox="0 0 1000 1000" style={{ flexShrink: 0 }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width={42} height={42} viewBox="0 0 1000 1000" style={{ flexShrink: 0 }}>
                   <path d="M120 340 C260 360, 380 400, 500 380 C620 360, 740 400, 880 380" fill="none" stroke="#678983" strokeWidth="13" strokeLinecap="round" strokeLinejoin="round"/>
                   <path d="M100 520 C260 480, 380 520, 500 500 C620 480, 740 520, 900 500" fill="none" stroke="#181D31" strokeWidth="13" strokeLinecap="round" strokeLinejoin="round"/>
                   <path d="M120 650 C260 600, 380 640, 500 620 C620 600, 740 640, 880 620" fill="none" stroke="#181D31" strokeWidth="13" strokeLinecap="round" strokeLinejoin="round"/>
@@ -105,16 +105,16 @@ export function Navbar() {
                   <path d="M500 120 C510 260, 520 380, 500 500 C480 620, 520 740, 480 880" fill="none" stroke="#678983" strokeWidth="13" strokeLinecap="round" strokeLinejoin="round"/>
                   <path d="M670 120 C600 260, 620 390, 620 500 C620 620, 620 740, 660 880" fill="none" stroke="#181D31" strokeWidth="13" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-                <span style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", color: "#181D31", fontSize: "1rem" }}>
+                <span style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", color: "#181D31", fontSize: "1.15rem" }}>
                   Hyphantiké
                 </span>
               </div>
             )}
           </Link>
 
-          {/* Desktop links */}
+          {/* Desktop links + social + Apoyanos */}
           {!isMobile && (
-            <div style={{ display: "flex", gap: "0" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "0" }}>
               {NAV_LINKS.map(link => (
                 <a
                   key={link.label}
@@ -125,7 +125,7 @@ export function Navbar() {
                   style={{
                     color: hovered === link.label ? "#678983" : "#181D31",
                     backgroundColor: hovered === link.label ? "rgba(103,137,131,0.08)" : "transparent",
-                    fontSize: "13px",
+                    fontSize: "15px",
                     letterSpacing: "0.08em",
                     padding: "6px 16px",
                     textDecoration: "none",
@@ -136,6 +136,47 @@ export function Navbar() {
                   {link.label}
                 </a>
               ))}
+
+              <a
+                href="/apoyanos"
+                onClick={(e) => { e.preventDefault(); navigate("/apoyanos"); setOpen(false); }}
+                onMouseEnter={() => setHovered("apoyanos")}
+                onMouseLeave={() => setHovered(null)}
+                style={{
+                  backgroundColor: hovered === "apoyanos" ? "#256427" : "#2E7D32",
+                  color: "#FFFFFF",
+                  fontSize: "14px",
+                  fontWeight: 600,
+                  letterSpacing: "0.04em",
+                  padding: "8px 20px",
+                  borderRadius: "6px",
+                  textDecoration: "none",
+                  fontFamily: "Inter, sans-serif",
+                  transition: "background-color 0.2s",
+                  marginLeft: "8px",
+                  cursor: "pointer",
+                }}
+              >
+                Apoyanos
+              </a>
+
+              <div style={{ display: "flex", alignItems: "center", gap: "14px", marginLeft: "20px", paddingLeft: "16px", borderLeft: "1px solid rgba(103,137,131,0.3)" }}>
+                <a href="https://www.instagram.com/hyphantike/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+                  onMouseEnter={() => setHovered("ig")} onMouseLeave={() => setHovered(null)}
+                  style={{ color: hovered === "ig" ? "#678983" : "#181D31", transition: "color 0.2s" }}>
+                  <Instagram size={20} />
+                </a>
+                <a href="https://wa.me/5492932637990" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
+                  onMouseEnter={() => setHovered("wa")} onMouseLeave={() => setHovered(null)}
+                  style={{ color: hovered === "wa" ? "#678983" : "#181D31", transition: "color 0.2s" }}>
+                  <MessageCircle size={20} />
+                </a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hyphantike@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Mail"
+                  onMouseEnter={() => setHovered("mail")} onMouseLeave={() => setHovered(null)}
+                  style={{ color: hovered === "mail" ? "#678983" : "#181D31", transition: "color 0.2s" }}>
+                  <Mail size={20} />
+                </a>
+              </div>
             </div>
           )}
 
@@ -167,7 +208,7 @@ export function Navbar() {
         <div
           style={{
             position: "fixed",
-            top: "60px",
+            top: "72px",
             left: 0,
             right: 0,
             zIndex: 49,
@@ -187,7 +228,7 @@ export function Navbar() {
                 color: "#181D31",
                 textDecoration: "none",
                 fontFamily: "Inter, sans-serif",
-                fontSize: "14px",
+                fontSize: "16px",
                 letterSpacing: "0.08em",
                 borderBottom: "1px solid rgba(103,137,131,0.2)",
                 touchAction: "manipulation",
@@ -196,6 +237,36 @@ export function Navbar() {
               {link.label}
             </a>
           ))}
+          <a
+            href="/apoyanos"
+            onClick={(e) => { e.preventDefault(); navigate("/apoyanos"); setOpen(false); }}
+            style={{
+              display: "block",
+              padding: "16px 24px",
+              backgroundColor: "#2E7D32",
+              color: "#FFFFFF",
+              textDecoration: "none",
+              fontFamily: "Inter, sans-serif",
+              fontSize: "16px",
+              fontWeight: 600,
+              letterSpacing: "0.04em",
+              textAlign: "center",
+              touchAction: "manipulation",
+            }}
+          >
+            Apoyanos
+          </a>
+          <div style={{ display: "flex", justifyContent: "center", gap: "24px", padding: "16px 24px", borderBottom: "1px solid rgba(103,137,131,0.2)" }}>
+            <a href="https://www.instagram.com/hyphantike/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ color: "#181D31" }}>
+              <Instagram size={22} />
+            </a>
+            <a href="https://wa.me/5492932637990" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" style={{ color: "#181D31" }}>
+              <MessageCircle size={22} />
+            </a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hyphantike@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Mail" style={{ color: "#181D31" }}>
+              <Mail size={22} />
+            </a>
+          </div>
         </div>
       )}
     </>

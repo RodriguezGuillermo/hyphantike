@@ -51,8 +51,8 @@ export function EnsayosPage() {
   const [cargando, setCargando] = useState(true);
 
   // Tus credenciales reales
-  const API_KEY = "AIzaSyAZfccHywHMbume3YFXKXZiGqH06DTgGWc";
-  const FOLDER_ID = "19zGfFBvBjMNP5j_MNVbpVeuRhzQzMvaH";
+  const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
+  const FOLDER_ID = import.meta.env.VITE_GOOGLE_FOLDER_ID;
 
   useEffect(() => {
     // Consulta a tu carpeta específica, trae 6 resultados (o los que haya si son menos), ordenados por los más nuevos

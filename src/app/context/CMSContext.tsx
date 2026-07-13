@@ -87,6 +87,18 @@ export const defaultCMS: CMSData = {
 
 const STORAGE_KEY = "hyphantiké_cms_v1";
 
+function isValidCMSData(data: unknown): data is CMSData {
+  if (!data || typeof data !== "object") return false;
+  const d = data as Record<string, unknown>;
+  if (typeof d.logoUrl !== "string") return false;
+  if (!d.nosotros || typeof d.nosotros !== "object") return false;
+  const n = d.nosotros as Record<string, unknown>;
+  if (typeof n.imageUrl !== "string" || typeof n.parrafo1 !== "string" || typeof n.parrafo2 !== "string" || typeof n.parrafo3 !== "string") return false;
+  if (typeof d.serviciosIntro !== "string") return false;
+  if (!Array.isArray(d.servicios) || !Array.isArray(d.ensayos)) return false;
+  return true;
+}
+
 interface CMSContextValue {
   data: CMSData;
   update: (next: CMSData) => void;
@@ -105,18 +117,22 @@ export function CMSProvider({ children }: { children: ReactNode }) {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
-        const parsed = JSON.parse(stored) as CMSData;
-        // Merge stored data with new defaults for services to pick up new images/titles
+        const parsed = JSON.parse(stored);
+        if (!isValidCMSData(parsed)) {
+          localStorage.removeItem(STORAGE_KEY);
+          return defaultCMS;
+        }
         return {
           ...parsed,
           servicios: defaultCMS.servicios.map(def => {
-            const stored_s = parsed.servicios?.find(s => s.id === def.id);
+            const stored_s = parsed.servicios?.find((s: Servicio) => s.id === def.id);
             return stored_s ? { ...def, ...stored_s, image: def.image, title: def.title, description: def.description } : def;
           }),
         };
       }
       return defaultCMS;
     } catch {
+      localStorage.removeItem(STORAGE_KEY);
       return defaultCMS;
     }
   });

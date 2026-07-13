@@ -88,7 +88,7 @@ export function ServicioPage() {
 
   if (!servicio) {
     return (
-      <div style={{ paddingTop: "80px", textAlign: "center", padding: "80px 24px" }}>
+      <div style={{ paddingTop: "90px", textAlign: "center", padding: "90px 24px" }}>
         <p style={{ fontFamily: "'EB Garamond', Georgia, serif", color: "#181D31" }}>Servicio no encontrado.</p>
         <Link to="/" style={{ color: "#678983" }}>Volver al inicio</Link>
       </div>
@@ -96,7 +96,7 @@ export function ServicioPage() {
   }
 
   return (
-    <div style={{ paddingTop: "60px" }}>
+    <div style={{ paddingTop: "72px" }}>
       <style>{`
         .servicio-header { padding: 40px 24px; }
         .servicio-body { padding: 40px 24px; }

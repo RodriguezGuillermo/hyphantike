@@ -53,7 +53,9 @@ export function Footer() {
             <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
               <Mail size={22} color="#678983" strokeWidth={1.5} />
               <a 
-                href="mailto:Hyphantike@gmail.com" 
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=hyphantike@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{ color: "rgba(240,233,210,0.85)", textDecoration: "none", transition: "color 0.2s", fontFamily: "Inter, sans-serif", fontSize: "1.1rem" }}
                 onMouseEnter={(e) => e.currentTarget.style.color = "#678983"}
                 onMouseLeave={(e) => e.currentTarget.style.color = "rgba(240,233,210,0.85)"}
