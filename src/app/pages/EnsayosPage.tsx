@@ -162,6 +162,35 @@ export function EnsayosPage() {
           )}
         </div>
 
+        {/* Botón a la carpeta completa en Google Drive */}
+        <div style={{ textAlign: "center", marginTop: "8px" }}>
+          <a
+            href="https://drive.google.com/drive/folders/19zGfFBvBjMNP5j_MNVbpVeuRhzQzMvaH"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-block",
+              backgroundColor: "#678983",
+              color: "#F0E9D2",
+              fontFamily: "Inter, sans-serif",
+              fontSize: "13px",
+              fontWeight: 600,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              padding: "12px 28px",
+              border: "none",
+              borderRadius: "6px",
+              textDecoration: "none",
+              cursor: "pointer",
+              transition: "background-color 0.2s",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#556f6a")}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#678983")}
+          >
+            Ver todos los ensayos en Google Drive
+          </a>
+        </div>
+
       </div>
     </div>
   );
