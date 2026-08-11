@@ -187,7 +187,7 @@ export function EnsayosPage() {
             onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#556f6a")}
             onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#678983")}
           >
-            Ver todos los ensayos en Google Drive
+            Ver todos los ensayos
           </a>
         </div>
 
