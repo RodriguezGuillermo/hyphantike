@@ -16,15 +16,7 @@ function LogoIphan({ size = 36 }: { size?: number }) {
   );
 }
 
-const PARRAFOS = [
-  "Hyphantiké surge de un interés personal por el arte de la política. Soy Licenciado en Filosofía (tesis en trámite), especializado en Filosofía Política.",
-  "Partimos de la idea de que la política atraviesa toda la realidad de los seres humanos: cada una de nuestras relaciones sociales contiene una dimensión política. Por eso retomamos la metáfora que utiliza Platón en El Político para describir esta actividad: Hyphantiké, el arte de tejer.",
-  "El político es, en este sentido, quien teje relaciones, mide su entorno y actúa tanto en el ámbito público como en el privado, tensando y desanudando conflictos.",
-  "Hyphantiké trabaja con actores políticos, instituciones públicas y organizaciones privadas para analizar y diseñar estructuras políticas de manera estratégica. Nuestro enfoque busca comprender las dinámicas de poder, ordenar diagnósticos y contribuir al diseño de soluciones institucionales claras y operativas.",
-  "No ofrecemos recetas genéricas. Cada institución, organización o actor político posee sus propias particularidades. Por ello, nuestro trabajo se orienta al diseño de arquitecturas políticas, entendiendo dicho concepto como la organización estructural de las relaciones, decisiones y discursos que permiten ordenar una institución y proyectar su acción en el tiempo.",
-  "Desde esta perspectiva, Hyphantiké trabaja sobre la estructura de los problemas políticos: analizando contextos, diseñando soluciones institucionales y contribuyendo a la construcción de discursos claros y coherentes.",
-  "El enfoque es interdisciplinario y el proyecto apunta, a futuro, a conformar un equipo de trabajo integrado por profesionales de distintas áreas.",
-];
+const PARRAFOS: string[] = [];
 
 export function Nosotros() {
   const { ref, isVisible } = useIntersectionObserver({ threshold: 0.08, triggerOnce: true });
@@ -89,7 +81,7 @@ export function Nosotros() {
 
               {[
                 "Hyphantiké surge de una convicción: la política no es un sector específico separado de la realidad, sino su trama constitutiva. Cada una de nuestras relaciones sociales contiene una dimensión política. Comprenderla, analizarla y ordenarla es una tarea que requiere método, rigor y perspectiva.",
-                "El nombre refiere a la metáfora que Platón utiliza en El Político para describir el arte de gobernar: la ὑφαντική - Hyphantiké, el arte de tejer. El político es quien teje relaciones, mide su entorno y actúa tensando y desanudando conflictos. Esa imagen condensa nuestra concepción del trabajo político no como imposición de voluntades, sino como construcción articulada de estructuras que permiten ordenar la acción colectiva en el tiempo. Nos gusta afirmar que:",
+                "El nombre refiere a la metáfora que Platón utiliza en El Político para describir el arte de gobernar: la Hyphantiké, el arte de tejer. El político es quien teje relaciones, mide su entorno y actúa tensando y desanudando conflictos. Esa imagen condensa nuestra concepción del trabajo político no como imposición de voluntades, sino como construcción articulada de estructuras que permiten ordenar la acción colectiva en el tiempo. Nos gusta afirmar que:",
               ].map((p, i) => (
                 <p key={i} style={{ fontFamily: "'EB Garamond', Georgia, serif", color: "#181D31", fontSize: "0.85rem", lineHeight: 1.7, margin: "0 0 9px" }}>
                   {p}
@@ -104,7 +96,7 @@ export function Nosotros() {
 
               {[
                 "Nuestro logo representa una trama irregular: el conjunto complejo de vínculos, intereses y tensiones que conforman cualquier sistema político. Desde esta perspectiva, la política puede entenderse como el arte de interpretar esa trama, desentrañar sus conflictos y contribuir a organizarla de manera estructurada. No ofrecemos recetas genéricas. Cada institución, organización o actor político posee sus propias particularidades.",
-                "Contamos con un equipo de profesionales que por ahora se enfocan en tres campos diferenciados, la filosofía, la política, y la economía. Obviamente los tres campos se interconectan, desde estos tres ámbitos Hyphantiké interpreta la realidad.",
+                "Nuestra labor se articula en torno a dos dimensiones complementarias: por un lado, una pata de trabajo e intervención orientada a la consultoría, la realización de encuestas y la capacitación, donde abordamos los tres niveles de análisis político; y por otro, una dimensión de apertura a la comunidad, enfocada en servicios y espacios de participación gratuitos, tales como nuestro grupo juvenil La Academia (cuyas actividades y convocatorias se pueden seguir en nuestras redes sociales).",
               ].map((p, i) => (
                 <p key={i} style={{ fontFamily: "'EB Garamond', Georgia, serif", color: "#181D31", fontSize: "0.85rem", lineHeight: 1.7, margin: i === 0 ? "0 0 9px" : "0" }}>
                   {p}
