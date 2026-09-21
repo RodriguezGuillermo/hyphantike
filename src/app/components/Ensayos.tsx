@@ -8,6 +8,7 @@ const PARRAFOS = [
   "La política se mueve. Los contextos cambian, los actores se reposicionan, las coyunturas abren y cierran ventanas de oportunidad. Publicar semanalmente es nuestra forma de mantener el análisis activo y situado en el tiempo.",
   "No escribimos para el archivo. Escribimos porque entendemos que el pensamiento político tiene que ser oportuno además de riguroso. Cada ensayo es un ejercicio de lectura estructural sobre la realidad que nos rodea ya sea local, provincial, nacional o internacional con el mismo método que aplicamos en nuestro trabajo de consultoría.",
   "Hyphantiké publica porque creer en la arquitectura política implica también construirla en público.",
+  "Escribir y compartir nuestros ensayos es, al mismo tiempo, una extensión de nuestro compromiso con la comunidad: buscamos que cada análisis circule, alimente el debate público y sirva como insumo formativo para quienes integran nuestros espacios de participación (como nuestro grupo juvenil La Academia) y para todos aquellos interesados en pensar la realidad desde una perspectiva rigurosa.",
 ];
 
 export function Ensayos() {
